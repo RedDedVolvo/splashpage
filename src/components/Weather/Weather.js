@@ -13,6 +13,7 @@ const Weather = () => {
     async function getWeather() {
       let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=meridian,US-ID&appid=e7920d347c4e8ded2b785cbc0ccf8e8e`;
 
+      // Get all necessary data and convert it to farenheit
       const response = await fetch(weatherUrl);
       const data = await response.json();
       let condition = data?.weather[0].main;
@@ -39,12 +40,7 @@ const Weather = () => {
     getWeather();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(condition);
-  // }, [condition]);
-
-  // let iconPath = "../../style/images/mycollection/png/";
-
+  // Had to use an img tag to generate the correct icon for the weather
   return (
     <div className="weather__container">
       <section className="temperatures">

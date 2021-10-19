@@ -5,6 +5,7 @@ const Quote = () => {
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
 
+  // Create random number for the index of quotes
   const getRandomNumber = (min, max) => {
     min = Math.ceil(10900);
     max = Math.floor(11000);
@@ -17,9 +18,11 @@ const Quote = () => {
 
       const response = await fetch(quoteUrl);
       const data = await response.json();
+      // Make sure only one quote is returned at a time.
       const randomIndex = Math.floor(Math.random() * data.length);
       let author = data[randomIndex].title.rendered;
       let rawContent = data[randomIndex].content.rendered;
+      // TODO: Get rid of any weird characters in the quote but allow for certain types (ie: &)
       let content = rawContent.replace(/(<([^>]+)>)/gi, "");
       setAuthor(author);
       setContent(content);

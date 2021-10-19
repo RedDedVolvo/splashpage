@@ -50,6 +50,8 @@ const Greeting = () => {
 
   useDate();
 
+  // TODO: Create the handle click function for changing the time from standard to military
+
   return (
     <div className="greeting__container">
       <span>{useDate().time ? "12 Hour" : "24 Hour"}</span>
