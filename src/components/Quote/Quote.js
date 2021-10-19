@@ -17,7 +17,6 @@ const Quote = () => {
 
       const response = await fetch(quoteUrl);
       const data = await response.json();
-      // console.log(data);
       const randomIndex = Math.floor(Math.random() * data.length);
       let author = data[randomIndex].title.rendered;
       let rawContent = data[randomIndex].content.rendered;
@@ -28,13 +27,14 @@ const Quote = () => {
     fetchRandomQuote();
   }, []);
 
-  console.log(author, content);
-
   return (
     <div className="quote__container">
       <section className="quote--content">{content}</section>
       <section className="quote--author">
-        <h3> - {author.toUpperCase()}</h3>
+        <span>
+          {" "}
+          <b>-</b> {author.toUpperCase()}
+        </span>
       </section>
     </div>
   );
