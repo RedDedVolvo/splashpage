@@ -35,6 +35,7 @@ const Greeting = () => {
     });
 
     return {
+      day,
       date,
       time,
       wish,
@@ -43,8 +44,25 @@ const Greeting = () => {
 
   useDate();
 
+  const dayOfWeek = useDate().day;
+  const isWeekend = dayOfWeek === 6 || dayOfWeek === 0;
+
   return (
     <div className="greeting__container">
+      <span className="day--display">
+        {isWeekend ? `Today is ${dayOfWeek}!` : `Happy ${dayOfWeek}!`}
+      </span>
+      <span
+        style={{
+          fontSize: "18px",
+          fontFamily: "cursive",
+          paddingBottom: "10px",
+        }}
+      >
+        {isWeekend
+          ? "Enjoy the weekend!"
+          : `Don't limit your challenges, challenge your limits.`}
+      </span>
       <span className="time--display">{useDate().time}</span>
       <span>{useDate().wish}</span>
     </div>

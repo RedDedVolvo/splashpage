@@ -30,3 +30,8 @@
   font-weight: 100;
   color: white;
 }
+
+.quote--author--hover {
+  font-size: 0px;
+  color: white;
+}

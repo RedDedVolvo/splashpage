@@ -4,6 +4,7 @@ import "./quote.style.css";
 const Quote = () => {
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
+  const [hovered, setHovered] = useState(false);
 
   // Create random number for the index of quotes
   const getRandomNumber = (min, max) => {
@@ -23,17 +24,26 @@ const Quote = () => {
       let author = data[randomIndex].title.rendered;
       let rawContent = data[randomIndex].content.rendered;
       // TODO: Get rid of any weird characters in the quote but allow for certain types (ie: &)
-      let content = rawContent.replace(/(<([^>]+)>)/gi, "");
+      let regex = /( |<([^>]+)>)/gi;
+      let content = rawContent.replace(regex, " ");
       setAuthor(author);
       setContent(content);
     }
     fetchRandomQuote();
   }, []);
 
+  const toggleHover = () => {
+    setHovered(!hovered);
+  };
+
   return (
-    <div className="quote__container">
+    <div
+      className="quote__container"
+      onMouseEnter={toggleHover}
+      onMouseLeave={toggleHover}
+    >
       <section className="quote--content">{content}</section>
-      <section className="quote--author">
+      <section className={hovered ? "quote--author" : "quote--author--hover"}>
         <span>
           {" "}
           <b>-</b> {author.toUpperCase()}

@@ -1,7 +1,7 @@
 .greeting__container {
   width: 15%;
   height: -moz-fit-content;
-  height: 15%;
+  height: fit-content;
   padding: 10px 0 10px 0;
   box-shadow: 0px 0px 15px 8px rgb(0 0 0);
   display: flex;
@@ -17,7 +17,7 @@
   text-align: center;
 }
 
-.time--display {
+.day--display {
   font-size: 25px !important;
   font-weight: 400;
   padding: 15px 0 15px 0;
