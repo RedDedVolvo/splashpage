@@ -34,15 +34,8 @@ const Greeting = () => {
       minute: "numeric",
     });
 
-    const milTime = today.toLocaleTimeString(locale, {
-      hour: "numeric",
-      hour12: false,
-      minute: "numeric",
-    });
-
     return {
       date,
-      milTime,
       time,
       wish,
     };
@@ -50,11 +43,8 @@ const Greeting = () => {
 
   useDate();
 
-  // TODO: Create the handle click function for changing the time from standard to military
-
   return (
     <div className="greeting__container">
-      <span>{useDate().time ? "12 Hour" : "24 Hour"}</span>
       <span className="time--display">{useDate().time}</span>
       <span>{useDate().wish}</span>
     </div>
